@@ -2,12 +2,12 @@
 import os
 
 # get session id, notice: account pass info read from config file
-# getSessinId = str("curl -k -X POST --data \"action=login&username=azkaban&password=azkaban\" http://192.168.43.63:8081/")
+# getSessinId = str("curl -k -X POST --data \"action=login&username=azkaban&password=xxxx\" http://10.80.0.231:8081/")
 # print("getSessinIdCmd:", getSessinId)
 # os.system(getSessinId)
-sessionId = "32869fd5-b3b9-485b-96db-b026643b6ffe"
+sessionId = "79ecc968-04e5-45fe-b796-xxxx"
 
-for i in range(1, 101):
+for i in range(1, 2):
     print("i: ", i)
     #
     # # createProject
@@ -31,14 +31,20 @@ for i in range(1, 101):
     # print("scheduleCmd:", schedule)
     # os.system(schedule)
 
-    #schedule parameter projects Mysql
-    # projectId = int(i) + 104
-    # schedule = str("curl -k http://10.80.0.231:8081/schedule -d \"ajax=scheduleFlow&is_recurring=on&period=1h&flowOverride[database]=dev_dw&flowOverride[user]=xxxx&flowOverride[password]=xxxx&flowOverride[host]=am-uf68cpts08jf19trn131910.ads.aliyuncs.com&flowOverride[sqlfile]=/opt/services/azkaban/azkaban-exec-server/build/install/azkaban-exec-server/bin/sql/Mysql-test-sql.sql&projectName=aaaa") + str(i) + str("&flow=test-flow&projectId=") + str(projectId) + str("&scheduleTime=19,34,pm,PDT&scheduleDate=02/21/2020\" -b azkaban.browser.session.id=") + str(sessionId)
-    # print("scheduleCmd:", schedule)
-    # os.system(schedule)
+    #schedule parameter projects Mysql 无其他替换参数
+    projectId = int(i) + 209
+    schedule = str("curl -k http://10.80.0.231:8081/schedule -d \"ajax=scheduleFlow&is_recurring=on&period=1h&flowOverride[database]=dev_dw&flowOverride[user]=xxxx&flowOverride[password]=xxxx&flowOverride[host]=am-uf68cpts08jf19trn131910.ads.aliyuncs.com&flowOverride[sqlfile]=/tmp/1.sql&flowOverride[other]={}&projectName=exec-mysql") + str("&flow=test-flow&projectId=") + str(projectId) + str("&scheduleTime=23,25,pm,PDT&scheduleDate=02/26/2020\" -b azkaban.browser.session.id=") + str(sessionId)
+    print("scheduleCmd:", schedule)
+    os.system(schedule)
+
+    #schedule parameter projects Mysql 有其他替换参数 (字典形式)：  &flowOverride[other]={'sql语句替换字段': '被替换的值'}
+    projectId = int(i) + 209
+    schedule = str("curl -k http://10.80.0.231:8081/schedule -d \"ajax=scheduleFlow&is_recurring=on&period=1h&flowOverride[database]=dev_dw&flowOverride[user]=xxxx&flowOverride[password]=xxxx&flowOverride[host]=am-uf68cpts08jf19trn131910.ads.aliyuncs.com&flowOverride[sqlfile]=/tmp/1.sql&flowOverride[other]={'midmid': '33'}&projectName=exec-mysql") + str("&flow=test-flow&projectId=") + str(projectId) + str("&scheduleTime=23,25,pm,PDT&scheduleDate=02/26/2020\" -b azkaban.browser.session.id=") + str(sessionId)
+    print("scheduleCmd:", schedule)
+    os.system(schedule)
 
     #unschedule parameter projects
-    scheduleId = int(i) + 464
-    unschedule = str("curl -k http://10.80.0.231:8081/schedule -d \"action=removeSched&scheduleId=") + str(scheduleId) + str("\" -b azkaban.browser.session.id=") + str(sessionId)
-    print("unscheduleCmd:", unschedule)
-    os.system(unschedule)
+    # scheduleId = int(i) + 464
+    # unschedule = str("curl -k http://10.80.0.231:8081/schedule -d \"action=removeSched&scheduleId=") + str(scheduleId) + str("\" -b azkaban.browser.session.id=") + str(sessionId)
+    # print("unscheduleCmd:", unschedule)
+    # os.system(unschedule)
