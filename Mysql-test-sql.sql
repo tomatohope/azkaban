@@ -1,1 +1,0 @@
-INSERT INTO wechat_customer_test SELECT *  from wechat_customer
