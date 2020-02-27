@@ -1,0 +1,12 @@
+# file dir
+vim connectSql/log.py
+home='' #指定log目录
+
+cp -r connectSql/ /usr/lib/python2.7/site-packages/
+
+#use
+import connectSql from execsql
+
+#module psycopg2 install
+pip list | grep psycopg2-binary
+pip install  psycopg2-binary
