@@ -1,0 +1,9 @@
+CREATE TABLE `connection` (
+  `name` varchar(20) NOT NULL,
+  `host` varchar(100) NOT NULL,
+  `user` varchar(30) NOT NULL,
+  `passwd` varchar(100) NOT NULL,
+  `db` varchar(30) NOT NULL,
+  `port` int(2) NOT NULL,
+  `is_delete` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4

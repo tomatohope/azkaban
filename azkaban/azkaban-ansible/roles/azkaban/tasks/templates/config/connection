@@ -1,0 +1,10 @@
+DW_ADB_MYSQL_HOST={{ dw_adb_mysql_host }}
+DW_ADB_MYSQL_DATABASE={{ dw_adb_mysql_database }}
+DW_ADB_MYSQL_USERNAME={{ dw_adb_mysql_username }}
+DW_ADB_MYSQL_PASSWORD={{ dw_adb_mysql_password }}
+
+DW_ADB_PGSQL_HOST={{ dw_adb_pgsql_host }}
+DW_ADB_PGSQL_PORT={{ dw_adb_pgsql_port }}
+DW_ADB_PGSQL_DATABASE={{ dw_adb_pgsql_database }}
+DW_ADB_PGSQL_USERNAME={{ dw_adb_pgsql_username }}
+DW_ADB_PGSQL_PASSWORD={{ dw_adb_pgsql_password }}

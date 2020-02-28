@@ -1,0 +1,8 @@
+---
+- name: clean connection files
+  shell: rm /opt/services/azkaban/azkaban-exec-server/build/install/azkaban-exec-server/bin/sql/connection -rf
+   
+- name: connection files
+  template: src={{ item.src }} dest={{ item.dest }} mode={{ item.mode|default(644) }}
+  with_items:
+   - { src: config/connection, dest: "/opt/services/azkaban/azkaban-exec-server/build/install/azkaban-exec-server/bin/sql/connection" }
